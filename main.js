@@ -3,17 +3,17 @@ let famousPeeps = [
         title: "Samurai",
         name: "Hattori Hanzo",
         bio: "Hattori Hanzo was a famous samurai of the Sengoku era, credited with saving the life of Tokugawa Ieyasu and then helping him to become the ruler of united Japan.",
-        image: "images/Hanzo_Hattori.jpg",
+        image: "images/hattori.jpg",
         lifespan: {
           birth: 1542,
           death: 1596
         }
       },
       {
-        title: "Pirate",
+        title: "Pirate Queen",
         name: "Ching Shih",
-        bio: "Ching Shih was a pirate queen in middle Qing China, who terrorized the China Sea in the early 19th century. She commanded over 300 junks (traditional Chinese sailing ships) manned by 20,000 to 40,000 pirates. She entered into conflict with the major nations, such as the British Empire, the Portuguese Empire, and the Qing dynasty.",
-        image: "images/ching-shih.jpg",
+        bio: "Ching Shih was a pirate in middle Qing China, who terrorized the China Sea in the early 19th century. She commanded over 300 junks (traditional Chinese sailing ships) manned by 20,000 to 40,000 pirates. She entered into conflict with the major nations, such as the British Empire, the Portuguese Empire, and the Qing dynasty.",
+        image: "images/ching.jpg",
         lifespan: {
           birth: 1775,
           death: 1844
@@ -50,3 +50,30 @@ let famousPeeps = [
         }
       },
     ]
+
+const printToDom = (stringToPrint, divId) => {
+  document.getElementById(divId).innerHTML += stringToPrint;
+} 
+
+const cardBuilder = () => {
+  for (i = 0; i < famousPeeps.length; i++) {
+    let stringBuilder = `<person>
+      <header>
+        <h4>The Famous ${famousPeeps[i].title}, ${famousPeeps[i].name}!</h4>
+      </header>
+      <section>
+        <img src="${famousPeeps[i].image}">
+        <p>${famousPeeps[i].bio}</p>
+      </section>
+      <footer>
+        <ul>
+          <li>Born: ${famousPeeps[i].lifespan.birth}</li>
+          <li>Died: ${famousPeeps[i].lifespan.death}</li>
+        </ul>
+      </footer>
+    </person>`;
+    printToDom(stringBuilder, 'cardContainer');
+  }
+}
+
+cardBuilder();

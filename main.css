@@ -1,3 +1,12 @@
-body {
-    background-color: lightsalmon;
-}
+
+
+#person2, #person4 {
+    background-color: lightblue;
+};
+
+#person1, #person3, #person5 {
+    background-color: lightyellow;
+};
+
+
+

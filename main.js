@@ -55,11 +55,15 @@ const printToDom = (stringToPrint, divId) => {
   document.getElementById(divId).innerHTML += stringToPrint;
 } 
 
+let counter = 0;
+
 const cardBuilder = () => {
   for (i = 0; i < famousPeeps.length; i++) {
-    let stringBuilder = `<person>
+    counter++;
+    let stringBuilder = `<div id="person${counter}" class="personCard w-25 m-5">
+      <person>
       <header>
-        <h4>The Famous ${famousPeeps[i].title}, ${famousPeeps[i].name}!</h4>
+        <h5>The Famous ${famousPeeps[i].title}, ${famousPeeps[i].name}!</h5>
       </header>
       <section>
         <img src="${famousPeeps[i].image}">
@@ -71,7 +75,8 @@ const cardBuilder = () => {
           <li>Died: ${famousPeeps[i].lifespan.death}</li>
         </ul>
       </footer>
-    </person>`;
+      </person>
+    </div>`;
     printToDom(stringBuilder, 'cardContainer');
   }
 }

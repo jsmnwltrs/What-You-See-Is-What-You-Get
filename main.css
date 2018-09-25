@@ -1,12 +1,19 @@
 
-
-#person2, #person4 {
-    background-color: lightblue;
-};
-
-#person1, #person3, #person5 {
+/* .oddCard {
     background-color: lightyellow;
 };
+
+.evenCard {
+    background-color: lightblue;
+}; */
+
+person:nth-child(1), person:nth-child(3), person:nth-child(5) {
+    background-color: lightyellow;
+}
+
+person:nth-child(2), person:nth-child(4) {
+    background-color: lightblue;
+}
 
 
 

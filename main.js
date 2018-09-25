@@ -60,8 +60,11 @@ let counter = 0;
 const cardBuilder = () => {
   for (i = 0; i < famousPeeps.length; i++) {
     counter++;
-    let stringBuilder = `<div id="person${counter}" class="personCard w-25 m-5">
-      <person>
+    // let stringBuilder = (counter & 1)
+    // ? `<div class="oddCard w-25 m-5">`
+    // : `<div class="evenCard w-25 m-5">`
+    let stringBuilder =
+    `<person class="w-25 m-5">
       <header>
         <h5>The Famous ${famousPeeps[i].title}, ${famousPeeps[i].name}!</h5>
       </header>
@@ -75,8 +78,8 @@ const cardBuilder = () => {
           <li>Died: ${famousPeeps[i].lifespan.death}</li>
         </ul>
       </footer>
-      </person>
-    </div>`;
+    </person>`;
+    // </div>`;
     printToDom(stringBuilder, 'cardContainer');
   }
 }

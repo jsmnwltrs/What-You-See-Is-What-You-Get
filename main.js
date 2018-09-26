@@ -68,7 +68,7 @@ const cardBuilder = () => {
           <div class="d-flex justify-content-center">
             <img src="${famousPeeps[i].image}">
           </div>
-          <p class="card-text">${famousPeeps[i].bio}</p>
+          <p id="bio" class="card-text">${famousPeeps[i].bio}</p>
         </div>
       </section>
       <footer>
@@ -88,8 +88,14 @@ const cardSelect = () => {
   const cardList = document.getElementsByClassName("card");
     for (i = 0; i < cardList.length; i++) {
       cardList[i].addEventListener('click', (e) => {
-        const cardIClicked = e.currentTarget
-        cardIClicked.classList.toggle('selected')
+        const input = document.getElementById('input');
+        input.focus();
+        
+        const cardIClicked = e.currentTarget;
+        cardIClicked.classList.toggle('selected');
+
+        const bio = document.getElementById('bio');
+        bio.innerHTML = input.value;
       })
     }
 };

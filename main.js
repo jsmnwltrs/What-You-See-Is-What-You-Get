@@ -104,22 +104,23 @@ inputFocus();
 
 
 const changeBio = () => {
-  const cardList = document.getElementsByClassName("card");
   const input = document.getElementById('input');
-    for (i = 0; i < cardList.length; i++) {
       input.addEventListener('keyup', () => {
       const selectedCards = document.getElementsByClassName('selected');
       for (i = 0; i < selectedCards.length; i++) {
       selectedCards[i].childNodes[5].innerHTML = input.value 
     }})
-  }
-};
+  };
 
 changeBio();
 
-// const clearInput = () => {
-//   const input = document.getElementById('input');
-//   input.addEventListener('keypress', {
+const clearInput = () => {
+  const input = document.getElementById('input');
+  input.addEventListener('keyup', (e) => {
+    if (e.keyCode === 13) {
+    input.value = '';
+  }})
+}
 
-//   })
-// }
+clearInput();
+

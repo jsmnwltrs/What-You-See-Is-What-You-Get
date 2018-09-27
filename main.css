@@ -1,3 +1,11 @@
-body {
-    background-color: lightsalmon;
+person:nth-child(odd) {
+    background-color: lightyellow;
+}
+
+person:nth-child(even) {
+    background-color: lightblue;
+}
+
+.selected {
+    border: 2px dotted black;
 }

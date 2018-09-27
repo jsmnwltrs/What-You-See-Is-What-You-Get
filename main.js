@@ -2,7 +2,7 @@ let famousPeeps = [
     {
         title: "Samurai",
         name: "Hattori Hanzo",
-        bio: "Hattori Hanzo was a famous samurai of the Sengoku era, credited with saving the life of Tokugawa Ieyasu and then helping him to become the ruler of united Japan.",
+        bio: "Hattori Hanzo was a famous samurai of the Sengoku era, credited with saving the life of Tokugawa Ieyasu and then helping him to become the ruler of united Japan. As a famous historical figure in one of Japan's greatest periods of samurai culture, Hattori Hanzō has significant cultural resonance among admirers of that culture, both within Japan and abroad.",
         image: "images/hattori.jpg",
         lifespan: {
           birth: 1542,
@@ -22,7 +22,7 @@ let famousPeeps = [
       {
         title: "Naval Commander",
         name: "Laskarina Bouboulina",
-        bio: "Laskarina Bouboulina was a Greek naval commander, heroine of the Greek War of Independence in 1821, and allegedly first woman-admiral of the Imperial Russian Navy.",
+        bio: "Laskarina Bouboulina was a Greek naval commander, heroine of the Greek War of Independence in 1821, and allegedly first woman-admiral of the Imperial Russian Navy. After her death, Emperor Alexander I of Russia granted Bouboulina the honorary rank of Admiral of the Russian Navy, making her, the first woman in world naval history to hold this title.",
         image: "images/Bouboulina.JPG",
         lifespan: {
           birth: 1771,
@@ -33,7 +33,7 @@ let famousPeeps = [
         title: "Political Leader",
         name: "Nanyehi (Nancy) Ward",
         bio: "Nanyehi, known in English as Nancy Ward, was a Beloved Woman and political leader of the Cherokee. She advocated for peaceful coexistence with European-Americans and, late in life, spoke out for Cherokee retention of tribal lands. She is also credited with the introduction of dairy products to the Cherokee economy.",
-        image: "images/Nancy.jpg",
+        image: "images/nancy.jpg",
         lifespan: {
           birth: 1738,
           death: 1824
@@ -42,7 +42,7 @@ let famousPeeps = [
       {
         title: "Phsychologist",
         name: "Sigmund Freud",
-        bio: "Sigmund Freud was an Austrian neurologist and the founder of psychoanalysis, a clinical method for treating psychopathology through dialogue between a patient and a psychoanalyst.",
+        bio: "Sigmund Freud was an Austrian neurologist and the founder of psychoanalysis, a clinical method for treating psychopathology through dialogue between a patient and a psychoanalyst. He studied medicine at the University of Vienna.",
         image: "images/Freud.jpg",
         lifespan: {
           birth: 1856,
@@ -55,25 +55,72 @@ const printToDom = (stringToPrint, divId) => {
   document.getElementById(divId).innerHTML += stringToPrint;
 } 
 
+
 const cardBuilder = () => {
   for (i = 0; i < famousPeeps.length; i++) {
-    let stringBuilder = `<person>
-      <header>
-        <h4>The Famous ${famousPeeps[i].title}, ${famousPeeps[i].name}!</h4>
-      </header>
-      <section>
-        <img src="${famousPeeps[i].image}">
-        <p>${famousPeeps[i].bio}</p>
-      </section>
-      <footer>
-        <ul>
-          <li>Born: ${famousPeeps[i].lifespan.birth}</li>
-          <li>Died: ${famousPeeps[i].lifespan.death}</li>
+    let stringBuilder =
+    `<person class="card w-25 m-5">
+        <h5 class="card-title text-center">The Famous ${famousPeeps[i].title}, ${famousPeeps[i].name}!</h5>
+          <div class="d-flex justify-content-center">
+            <img src="${famousPeeps[i].image}">
+          </div>
+          <div class="card-body">
+          <p class="card-text">${famousPeeps[i].bio}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Born: ${famousPeeps[i].lifespan.birth}</li>
+          <li class="list-group-item">Died: ${famousPeeps[i].lifespan.death}</li>
         </ul>
-      </footer>
-    </person>`;
+    </person>`
     printToDom(stringBuilder, 'cardContainer');
   }
 }
 
 cardBuilder();
+
+const cardSelect = () => {
+  const cardList = document.getElementsByClassName("card");
+    for (i = 0; i < cardList.length; i++) {
+      cardList[i].addEventListener('click', (e) => {
+        const cardIClicked = e.currentTarget;
+        cardIClicked.classList.toggle('selected');
+      })
+    }
+};
+
+cardSelect();
+
+const inputFocus = () => {
+  const cardList = document.getElementsByClassName("card");
+    for (i = 0; i < cardList.length; i++) {
+      cardList[i].addEventListener('click', () => {
+        const input = document.getElementById('input');
+        input.focus();
+      })
+    }
+};
+
+inputFocus();
+
+
+const changeBio = () => {
+  const input = document.getElementById('input');
+      input.addEventListener('keyup', () => {
+      const selectedCards = document.getElementsByClassName('selected');
+      for (i = 0; i < selectedCards.length; i++) {
+      selectedCards[i].childNodes[5].innerHTML = input.value 
+    }})
+  };
+
+changeBio();
+
+const clearInput = () => {
+  const input = document.getElementById('input');
+  input.addEventListener('keyup', (e) => {
+    if (e.keyCode === 13) {
+    input.value = '';
+  }})
+}
+
+clearInput();
+

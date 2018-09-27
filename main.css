@@ -1,3 +1,9 @@
+body{
+    background-image: url(images/fall.jpg);
+    background-size: 2200px;
+    background-repeat: no-repeat;
+}
+
 person:nth-child(odd) {
     background-color: lightyellow;
 }

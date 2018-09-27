@@ -1,3 +1,5 @@
+//Data Structure
+
 let famousPeeps = [
     {
         title: "Samurai",
@@ -51,6 +53,15 @@ let famousPeeps = [
       },
     ]
 
+
+//Global Variables
+
+const cardList = document.getElementsByClassName("card");
+const input = document.getElementById('input');
+
+
+//Functions
+
 const printToDom = (stringToPrint, divId) => {
   document.getElementById(divId).innerHTML += stringToPrint;
 } 
@@ -76,10 +87,7 @@ const cardBuilder = () => {
   }
 }
 
-cardBuilder();
-
 const cardSelect = () => {
-  const cardList = document.getElementsByClassName("card");
     for (i = 0; i < cardList.length; i++) {
       cardList[i].addEventListener('click', (e) => {
         const cardIClicked = e.currentTarget;
@@ -88,10 +96,7 @@ const cardSelect = () => {
     }
 };
 
-cardSelect();
-
 const inputFocus = () => {
-  const cardList = document.getElementsByClassName("card");
     for (i = 0; i < cardList.length; i++) {
       cardList[i].addEventListener('click', () => {
         const input = document.getElementById('input');
@@ -100,11 +105,7 @@ const inputFocus = () => {
     }
 };
 
-inputFocus();
-
-
 const changeBio = () => {
-  const input = document.getElementById('input');
       input.addEventListener('keyup', () => {
       const selectedCards = document.getElementsByClassName('selected');
       for (i = 0; i < selectedCards.length; i++) {
@@ -112,15 +113,19 @@ const changeBio = () => {
     }})
   };
 
-changeBio();
-
 const clearInput = () => {
-  const input = document.getElementById('input');
   input.addEventListener('keyup', (e) => {
     if (e.keyCode === 13) {
     input.value = '';
   }})
 }
 
+
+//Call Functions
+
+cardBuilder();
+cardSelect();
+inputFocus();
+changeBio();
 clearInput();
 

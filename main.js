@@ -60,23 +60,17 @@ const cardBuilder = () => {
   for (i = 0; i < famousPeeps.length; i++) {
     let stringBuilder =
     `<person class="card w-25 m-5">
-      <header>
         <h5 class="card-title text-center">The Famous ${famousPeeps[i].title}, ${famousPeeps[i].name}!</h5>
-      </header>
-      <section>
-        <div class="card-body">
           <div class="d-flex justify-content-center">
             <img src="${famousPeeps[i].image}">
           </div>
-          <p id="bio" class="card-text">${famousPeeps[i].bio}</p>
+          <div class="card-body">
+          <p class="card-text">${famousPeeps[i].bio}</p>
         </div>
-      </section>
-      <footer>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Born: ${famousPeeps[i].lifespan.birth}</li>
           <li class="list-group-item">Died: ${famousPeeps[i].lifespan.death}</li>
         </ul>
-      </footer>
     </person>`
     printToDom(stringBuilder, 'cardContainer');
   }
@@ -88,17 +82,44 @@ const cardSelect = () => {
   const cardList = document.getElementsByClassName("card");
     for (i = 0; i < cardList.length; i++) {
       cardList[i].addEventListener('click', (e) => {
-        const input = document.getElementById('input');
-        input.focus();
-        
         const cardIClicked = e.currentTarget;
         cardIClicked.classList.toggle('selected');
-
-        const bio = document.getElementById('bio');
-        bio.innerHTML = input.value;
       })
     }
 };
 
 cardSelect();
 
+const inputFocus = () => {
+  const cardList = document.getElementsByClassName("card");
+    for (i = 0; i < cardList.length; i++) {
+      cardList[i].addEventListener('click', () => {
+        const input = document.getElementById('input');
+        input.focus();
+      })
+    }
+};
+
+inputFocus();
+
+
+const changeBio = () => {
+  const cardList = document.getElementsByClassName("card");
+  const input = document.getElementById('input');
+    for (i = 0; i < cardList.length; i++) {
+      input.addEventListener('keyup', () => {
+      const selectedCards = document.getElementsByClassName('selected');
+      for (i = 0; i < selectedCards.length; i++) {
+      selectedCards[i].childNodes[5].innerHTML = input.value 
+    }})
+  }
+};
+
+changeBio();
+
+// const clearInput = () => {
+//   const input = document.getElementById('input');
+//   input.addEventListener('keypress', {
+
+//   })
+// }
